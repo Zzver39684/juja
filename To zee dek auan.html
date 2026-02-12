@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>สำหรับคนพิเศษของผม ❤️</title>
+    <style>
+        body {
+            font-family: 'Tahoma', sans-serif;
+            background-color: #fff0f3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 90%;
+        }
+
+        h1 { color: #ff4d6d; font-size: 1.5rem; }
+        p { color: #555; line-height: 1.6; }
+
+        button {
+            background-color: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        button:hover { background-color: #ff758f; }
+
+        input {
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            width: 80%;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .hidden { display: none !important; }
+
+        .story-box {
+            text-align: left;
+            max-height: 250px;
+            overflow-y: auto;
+            padding-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .flower-frame img {
+            width: 100%;
+            border-radius: 15px;
+            margin: 15px 0;
+        }
+
+        .sweet-text { color: #ff4d6d; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div id="page1" class="container">
+        <h1>ถึงน้องสีคนสวยของเค้า ❤️</h1>
+        <p>มีอะไรบางอย่างอยากจะบอก... ลองกดดูนะ</p>
+        <button onclick="goToPage(2)">คลิกตรงนี้สิ</button>
+    </div>
+
+    <div id="page2" class="container hidden">
+        <h1>ยืนยันตัวตนหน่อย!</h1>
+        <p>ใส่รหัสผ่าน (เช่น 23/11/68)</p>
+        <input type="text" id="passwordInput" placeholder="ใส่รหัสตรงนี้...">
+        <br>
+        <button onclick="checkPassword()">ตกลง</button>
+    </div>
+
+    <div id="page3" class="container hidden">
+        <h1>ขอบคุณที่อยู่ด้วยกันนะ ✨</h1>
+        <div class="story-box">
+            <p><strong>1:</strong> ขอบคุณที่อยู่กับเค้าตลอดเวลา ไม่ว่าจะเป็นวันที่ดีหรือร้าย</p>
+            <hr>
+            <p><strong>2:</strong> ขอบคุณที่คอยเป็นกำลังใจให้เค้าตอนเหนื่อยๆ เธอคือความสบายใจของเค้าจริงๆ</p>
+            <hr>
+            <p><strong>3:</strong> เป็นไออ้วนของเค้าไปนานๆนะค้าบบ ❤️❤️</p>
+        </div>
+        <button onclick="goToPage(4)">ไปต่อ</button>
+    </div>
+
+    <div id="page4" class="container hidden">
+        <h1>ดอกไม้สำหรับคนเก่ง 💐</h1>
+        <p>ขอบคุณที่อ่านจนจบนะครับ ดีใจมั้ยเอ่ย 😛😛😛</p>
+        <div class="flower-frame">
+            <img src="https://i.pinimg.com/736x/d5/1f/27/d51f27689b5c1a9b370324c085ecab0f.jpg" alt="Rose">
+        </div>
+        <p class="sweet-text">"รักเธอที่สุดในโลกเลย ❤️"</p>
+        <button onclick="goToPage(1)">กลับหน้าแรก</button>
+    </div>
+
+    <script>
+        function goToPage(pageNum) {
+            console.log('Going to page:', pageNum); // เพิ่ม debug log
+            
+            // ปิดทุกหน้า
+            const allPages = ['page1', 'page2', 'page3', 'page4'];
+            allPages.forEach(function(pageId) {
+                const page = document.getElementById(pageId);
+                if (page) {
+                    page.classList.add('hidden');
+                }
+            });
+            
+            // เปิดหน้าที่จะไป
+            const targetPage = document.getElementById('page' + pageNum);
+            if (targetPage) {
+                targetPage.classList.remove('hidden');
+                console.log('Opened page:', pageNum); // เพิ่ม debug log
+            } else {
+                console.error('Page not found:', 'page' + pageNum); // เพิ่ม error log
+            }
+        }
+
+        function checkPassword() {
+            const pass = document.getElementById('passwordInput').value.trim();
+            const correctPass = "23/11/68"; 
+
+            if (pass === correctPass) {
+                goToPage(3);
+            } else {
+                alert("รหัสผิดนะไออ้วน! ลองใหม่ดูสิ");
+            }
+        }
+    </script>
+</body>
+</html>
